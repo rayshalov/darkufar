@@ -1,0 +1,22 @@
+{
+  "name": "darkufar",
+  "version": "1.0.0",
+  "description": "Тёмная тема для kufar.by — Chrome расширение",
+  "scripts": {
+    "icons": "node scripts/generate-icons.js",
+    "build": "npm run icons && node scripts/build.js",
+    "dev": "echo 'Загрузите папку расширения в chrome://extensions в режиме разработчика'"
+  },
+  "devDependencies": {
+    "canvas": "^2.11.2"
+  },
+  "keywords": [
+    "kufar",
+    "dark-theme",
+    "dark-mode",
+    "chrome-extension",
+    "belarus"
+  ],
+  "author": "Darkufar",
+  "license": "MIT"
+}

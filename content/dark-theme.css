@@ -1,0 +1,136 @@
+/* =========================================================
+   DARKUFAR v8 — Тёмная тема для kufar.by
+   ========================================================= */
+
+/* --- Базовый инверт + контраст ---
+   color-scheme: light — чтобы браузер/macOS рендерил СВЕТЛЫЕ
+   скроллбары (они после инверта станут тёмными).
+*/
+html.darkufar-enabled {
+  filter: invert(1) hue-rotate(180deg) contrast(1.1) !important;
+  /*
+   * #111111 = тёмный КАНВАС браузера (оверскролл-зона при прокрутке за край).
+   * Внутри страницы этот фон перекрывается body (который #fff → после инверта = #000).
+   */
+  background-color: #111111 !important;
+  color-scheme: light !important;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   ТАРГЕТИРОВАННЫЕ ФИКСЫ серых фонов
+   Используем data-атрибуты и ID из HTML Куфара
+   (не трогаем div глобально!)
+   ========================================================= */
+
+/* Основной контент и сайдбар — выравниваем к белому → чёрный после инверта */
+html.darkufar-enabled body,
+html.darkufar-enabled #main-content,
+html.darkufar-enabled [data-cy="kufar-ge-listing-left-content"],
+html.darkufar-enabled [class*="listings__content"],
+html.darkufar-enabled [class*="content__left"],
+html.darkufar-enabled [class*="filter__container"],
+html.darkufar-enabled [class*="filter_container"],
+html.darkufar-enabled [class*="wrapper__container"],
+html.darkufar-enabled [class*="page__content"],
+html.darkufar-enabled [class*="__wrapper"],
+html.darkufar-enabled [class*="__content"],
+html.darkufar-enabled [class*="__container"] {
+  background-color: #ffffff !important; /* → #000000 */
+}
+
+/* Фон хедера */
+html.darkufar-enabled #header-wrapper,
+html.darkufar-enabled [id*="header"],
+html.darkufar-enabled [class*="header"] {
+  background-color: #f8f8f8 !important; /* → #070707 — чуть отличается от body */
+}
+
+/* Карточки объявлений — чуть светлее чёрного для контраста */
+html.darkufar-enabled [class*="snippet"],
+html.darkufar-enabled [class*="listing-item"],
+html.darkufar-enabled [class*="ad-card"],
+html.darkufar-enabled [class*="item__wrapper"],
+html.darkufar-enabled [class*="card__wrapper"] {
+  background-color: #e8e8e8 !important; /* → #171717 */
+}
+
+/* =========================================================
+   ИЗОБРАЖЕНИЯ / МЕДИА — двойной инверт
+   ========================================================= */
+html.darkufar-enabled img,
+html.darkufar-enabled video,
+html.darkufar-enabled canvas,
+html.darkufar-enabled picture {
+  filter: invert(1) hue-rotate(180deg) contrast(0.91) !important;
+  /* counter-contrast чтобы компенсировать contrast(1.1) на html */
+}
+
+html.darkufar-enabled svg {
+  filter: invert(1) hue-rotate(180deg) contrast(0.91) !important;
+}
+
+/* =========================================================
+   ОВЕРЛЕИ / БЭКДРОПЫ (поиск, модалки)
+   Куфар использует rgba(0,0,0,X) — после инверта это rgba(255,255,255,X).
+   Переопределяем на rgba(255,255,255,X) → после инверта → rgba(0,0,0,X) = тёмный ✓
+   ========================================================= */
+html.darkufar-enabled [class*="overlay"],
+html.darkufar-enabled [class*="Overlay"],
+html.darkufar-enabled [class*="backdrop"],
+html.darkufar-enabled [class*="Backdrop"],
+html.darkufar-enabled [class*="dimm"],
+html.darkufar-enabled [class*="mask"],
+html.darkufar-enabled [class*="modal__bg"],
+html.darkufar-enabled [class*="search__bg"],
+html.darkufar-enabled [class*="shadow__bg"] {
+  /* Белый полупрозрачный → после инверта = тёмный полупрозрачный */
+  background-color: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: none !important;
+}
+
+/* =========================================================
+   СКРОЛЛБАР — форсируем кастомный (внутри filter-контекста)
+   Кастомный scrollbar с явным width заменяет нативный macOS.
+   rgba(255,255,255,X) → после invert(1) → rgba(0,0,0,X) = тёмный ✓
+   ========================================================= */
+
+/* Отключаем нативный скроллбар на html и body */
+html.darkufar-enabled {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.45) rgba(255,255,255,0.05);
+}
+
+/* Форсируем кастомный webkit скроллбар */
+html.darkufar-enabled ::-webkit-scrollbar,
+html.darkufar-enabled *::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+html.darkufar-enabled ::-webkit-scrollbar-track,
+html.darkufar-enabled *::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: 0 !important;
+}
+
+html.darkufar-enabled ::-webkit-scrollbar-thumb,
+html.darkufar-enabled *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.45) !important;
+  /* После invert(1) → rgba(0,0,0,0.55) = тёмно-серый thumb */
+  border-radius: 5px !important;
+  border: 2px solid rgba(255, 255, 255, 0.04) !important;
+  min-height: 40px !important;
+}
+
+html.darkufar-enabled ::-webkit-scrollbar-thumb:hover,
+html.darkufar-enabled *::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.65) !important;
+  /* После invert → rgba(0,0,0,0.35) = чуть светлее при hover */
+}
+
+html.darkufar-enabled ::-webkit-scrollbar-corner,
+html.darkufar-enabled *::-webkit-scrollbar-corner {
+  background: rgba(255, 255, 255, 0.04) !important;
+}

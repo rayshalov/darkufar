@@ -1,0 +1,58 @@
+/* =========================================================
+   DARKUFAR — Блокировщик рекламы (через класс html.darkufar-adblock)
+   ТОЛЬКО внешняя реклама, НЕ объявления пользователей
+   ========================================================= */
+
+/* --- Adfox (Яндекс) --- */
+html.darkufar-adblock [id^="adfox_"],
+html.darkufar-adblock [id^="adfox-"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* --- Яндекс RTB --- */
+html.darkufar-adblock [id^="yandex_rtb_"] {
+  display: none !important;
+}
+
+/* --- Google DFP / GPT --- */
+html.darkufar-adblock [id^="gpt-ad-"],
+html.darkufar-adblock [id^="div-gpt-ad"],
+html.darkufar-adblock [id^="google_ads_iframe"] {
+  display: none !important;
+}
+
+/* --- iFrame рекламных сетей --- */
+html.darkufar-adblock iframe[src*="an.yandex.ru"],
+html.darkufar-adblock iframe[src*="doubleclick.net"],
+html.darkufar-adblock iframe[src*="googlesyndication"],
+html.darkufar-adblock iframe[src*="googletagservices"],
+html.darkufar-adblock iframe[src*="adfox.ru"],
+html.darkufar-adblock iframe[src*="adfox.me"],
+html.darkufar-adblock iframe[src*="rambler-ad"],
+html.darkufar-adblock iframe[src*="mytarget.ru"],
+html.darkufar-adblock iframe[src*="vk.com/rpc"] {
+  display: none !important;
+}
+
+/* --- iFrame ставочников --- */
+html.darkufar-adblock iframe[src*="belbet"],
+html.darkufar-adblock iframe[src*="1xbet"],
+html.darkufar-adblock iframe[src*="fonbet"],
+html.darkufar-adblock iframe[src*="parimatch"],
+html.darkufar-adblock iframe[src*="olimpbet"],
+html.darkufar-adblock iframe[src*="pari.ru"],
+html.darkufar-adblock iframe[src*="betcity"] {
+  display: none !important;
+}
+
+/* --- JS-скрытые блоки (помечаются data-атрибутом) --- */
+html.darkufar-adblock [data-darkufar-ad="true"] {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

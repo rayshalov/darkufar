@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darkufar</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup">
+
+    <!-- Шапка -->
+    <header class="popup__header">
+      <div class="popup__logo">
+        <svg class="popup__moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+        </svg>
+        <span class="popup__title">Darkufar</span>
+      </div>
+      <span class="popup__subtitle">Тёмная тема для Куфара</span>
+    </header>
+
+    <!-- Переключатель -->
+    <div class="popup__toggle-section">
+      <div class="popup__toggle-info">
+        <span class="popup__toggle-label" id="statusLabel">Тёмная тема</span>
+        <span class="popup__toggle-desc" id="statusDesc">Загрузка...</span>
+      </div>
+      <label class="toggle" id="themeToggle" title="Включить/выключить тёмную тему">
+        <input type="checkbox" id="themeCheckbox" />
+        <span class="toggle__slider"></span>
+      </label>
+    </div>
+
+    <!-- Блокировщик рекламы -->
+    <div class="popup__toggle-section">
+      <div class="popup__toggle-info">
+        <span class="popup__toggle-label">Блокировщик рекламы</span>
+        <span class="popup__toggle-desc" id="adblockDesc">Скрывает баннеры и рекламу</span>
+      </div>
+      <label class="toggle" id="adblockToggle" title="Включить/выключить блокировщик">
+        <input type="checkbox" id="adblockCheckbox" />
+        <span class="toggle__slider toggle__slider--ad"></span>
+      </label>
+    </div>
+
+    <!-- Быстрые настройки -->
+    <div class="popup__settings">
+      <div class="popup__setting-group">
+        <span class="popup__setting-label">Яркость</span>
+        <div class="popup__slider-row">
+          <svg class="popup__icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="range" id="brightnessSlider" min="70" max="100" value="100" class="popup__range" />
+          <span class="popup__range-value" id="brightnessValue">100%</span>
+        </div>
+      </div>
+
+      <div class="popup__setting-group">
+        <span class="popup__setting-label">Контраст</span>
+        <div class="popup__slider-row">
+          <svg class="popup__icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 2a10 10 0 0 1 0 20V2z" fill="currentColor"/></svg>
+          <input type="range" id="contrastSlider" min="80" max="120" value="100" class="popup__range" />
+          <span class="popup__range-value" id="contrastValue">100%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Статус -->
+    <div class="popup__status" id="statusBadge">
+      <div class="popup__status-dot" id="statusDot"></div>
+      <span id="statusText">Активно на kufar.by</span>
+    </div>
+
+    <!-- Промо-баннер бота -->
+    <a href="https://t.me/skywth_bot" target="_blank" class="popup__promo" id="promoBot">
+      <img src="../icons/snipe-bot-logo.jpg" alt="Snipe Bot" class="popup__promo-logo" />
+      <div class="popup__promo-text">
+        <span class="popup__promo-name">🎯 Snipe Bot</span>
+        <span class="popup__promo-desc">Мониторинг объявлений на Куфаре</span>
+      </div>
+      <svg class="popup__promo-arrow" viewBox="0 0 24 24" fill="none">
+        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- Футер -->
+    <footer class="popup__footer">
+      <a href="https://www.kufar.by" target="_blank" class="popup__footer-link">kufar.by</a>
+      <span class="popup__footer-sep">·</span>
+      <span class="popup__version">v1.0.0</span>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

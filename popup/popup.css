@@ -1,0 +1,439 @@
+/* =========================================================
+   DARKUFAR — Popup Styles
+   ========================================================= */
+
+:root {
+  --accent:       #00AD64;
+  --accent-hover: #00c974;
+  --bg:           #141414;
+  --bg-section:   #1e1e1e;
+  --bg-input:     #2a2a2a;
+  --border:       #2e2e2e;
+  --text-primary: #f0f0f0;
+  --text-secondary:#9a9a9a;
+  --text-muted:   #5e5e5e;
+  --radius:       10px;
+  --shadow:       0 4px 24px rgba(0,0,0,0.6);
+  --transition:   0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-width: 300px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.popup {
+  width: 300px;
+  padding: 0 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* =========================================================
+   ШАПКА
+   ========================================================= */
+.popup__header {
+  background: linear-gradient(135deg, #0d1a12 0%, #1a2e1e 100%);
+  padding: 18px 18px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.popup__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup__moon {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.popup__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.popup__subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding-left: 30px;
+}
+
+/* =========================================================
+   ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
+   ========================================================= */
+.popup__toggle-section {
+  background: var(--bg-section);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.popup__toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.popup__toggle-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.popup__toggle-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Toggle Switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle__slider {
+  position: absolute;
+  inset: 0;
+  background-color: #3a3a3a;
+  border-radius: 26px;
+  transition: var(--transition);
+  border: 1px solid #4a4a4a;
+}
+
+.toggle__slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 2px;
+  top: 2px;
+  background: #888;
+  border-radius: 50%;
+  transition: var(--transition);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.toggle input:checked + .toggle__slider {
+  background-color: var(--accent);
+  border-color: var(--accent-hover);
+}
+
+.toggle input:checked + .toggle__slider::before {
+  transform: translateX(20px);
+  background: #ffffff;
+}
+
+.toggle:hover .toggle__slider {
+  border-color: var(--accent);
+}
+
+/* Вариант для рекламного блокировщика — красный акцент */
+.toggle input:checked + .toggle__slider--ad {
+  background-color: #e05555;
+  border-color: #ff7070;
+}
+
+.toggle:has(#adblockCheckbox:checked) .toggle__slider {
+  background-color: #e05555;
+  border-color: #ff7070;
+}
+
+/* =========================================================
+   НАСТРОЙКИ — СЛАЙДЕРЫ
+   ========================================================= */
+.popup__settings {
+  background: var(--bg-section);
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.popup__setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.popup__setting-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.popup__slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup__icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.popup__range {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--bg-input);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.popup__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(0, 173, 100, 0.2);
+  transition: box-shadow var(--transition);
+}
+
+.popup__range::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 5px rgba(0, 173, 100, 0.3);
+}
+
+.popup__range:disabled::-webkit-slider-thumb {
+  background: var(--text-muted);
+  box-shadow: none;
+}
+
+.popup__range:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.popup__range-value {
+  font-size: 11px;
+  color: var(--text-secondary);
+  min-width: 32px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   СТАТУС БЕЙДЖ
+   ========================================================= */
+.popup__status {
+  background: var(--bg-section);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.popup__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+
+.popup__status-dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 173, 100, 0.2);
+  animation: pulse 2s infinite;
+}
+
+.popup__status-dot.inactive {
+  background: var(--text-muted);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(0, 173, 100, 0.2); }
+  50%       { box-shadow: 0 0 0 5px rgba(0, 173, 100, 0.1); }
+}
+
+#statusText {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* =========================================================
+   ФУТЕР
+   ========================================================= */
+.popup__footer {
+  background: var(--bg);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.popup__footer-link {
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.popup__footer-link:hover {
+  text-decoration: underline;
+}
+
+.popup__footer-sep {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.popup__version {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+   ========================================================= */
+.popup {
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   ПРОМО-БАННЕР БОТА
+   ========================================================= */
+.popup__promo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin: 8px 12px;
+  background: linear-gradient(135deg, #1a2332 0%, #0f1923 100%);
+  border: 1px solid #2196f330;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.popup__promo::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, #2196f308, transparent);
+  pointer-events: none;
+}
+
+.popup__promo:hover {
+  background: linear-gradient(135deg, #1e2d42 0%, #131d2a 100%);
+  border-color: #2196f360;
+  transform: translateY(-1px);
+}
+
+.popup__promo:active {
+  transform: translateY(0);
+}
+
+.popup__promo-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #2196f340;
+  background: #fff;
+}
+
+.popup__promo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.popup__promo-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8f4ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popup__promo-desc {
+  font-size: 11px;
+  color: #7ba8cc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popup__promo-arrow {
+  width: 16px;
+  height: 16px;
+  color: #4a90c4;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.popup__promo:hover .popup__promo-arrow {
+  transform: translateX(3px);
+}
+
+/* Метка "Telegram" */
+.popup__promo::after {
+  content: 'Telegram';
+  position: absolute;
+  top: 6px;
+  right: 28px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #2196f3;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}

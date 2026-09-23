@@ -1,0 +1,17 @@
+# Build artifacts
+dist/
+darkufar-v*.zip
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
