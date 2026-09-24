@@ -56,6 +56,24 @@ html.darkufar-enabled [class*="card__wrapper"] {
 }
 
 /* =========================================================
+   НАВИГАЦИОННЫЕ ССЫЛКИ — видимость
+   Структура Куфара: #header-wrapper > div.top_header > div.header__links > <a>
+   Никакого <nav> тега нет — таргетируем напрямую по id и классам.
+   ========================================================= */
+html.darkufar-enabled #header-wrapper a,
+html.darkufar-enabled [class*="top_header"] a,
+html.darkufar-enabled [class*="header__links"] a,
+html.darkufar-enabled [class*="header__link"] {
+  color: #1a1a1a !important; /* → #e5e5e5 после инверта = читаемо ✓ */
+}
+
+/* Hover — зелёный акцент Куфара (#00AD64 сохраняет оттенок через invert+hue-rotate) */
+html.darkufar-enabled #header-wrapper a:hover,
+html.darkufar-enabled [class*="top_header"] a:hover {
+  color: #00AD64 !important;
+}
+
+/* =========================================================
    ИЗОБРАЖЕНИЯ / МЕДИА — двойной инверт
    ========================================================= */
 html.darkufar-enabled img,
